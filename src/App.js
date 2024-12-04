@@ -6,6 +6,8 @@ import Calc1 from './comp/calc/study01'
 import Inp1 from './comp/inp/input01'
 import Oup1 from './comp/inp/output01'
 
+import ProJoin from './comp/pro/Join'
+
 function App() {
   return (
     <div className="App">
@@ -18,6 +20,8 @@ function App() {
 
           <Route path={"/inp1"} element={<Inp1 />} />
           <Route path={"/oup1"} element={<Oup1 />} />
+
+          <Route path={"/pro1"} element={<ProJoin />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -42,6 +46,9 @@ function Home() {
       <h4>데이터 옮기기</h4>
       <Link to="/inp1">데이터 입력</Link><br/>
       <Link to="/oup1">데이터 출력</Link><br/>
+
+      <h4>과제</h4>
+      <Link to="/pro1">회원가입 창</Link>
     </div>
   )
 }
