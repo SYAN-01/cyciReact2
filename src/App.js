@@ -8,6 +8,8 @@ import Oup1 from './comp/inp/output01'
 
 import ProJoin from './comp/pro/Join'
 
+import Ax1 from './comp/ax/ax01'
+
 function App() {
   return (
     <div className="App">
@@ -22,6 +24,8 @@ function App() {
           <Route path={"/oup1"} element={<Oup1 />} />
 
           <Route path={"/pro1"} element={<ProJoin />} />
+
+          <Route path={"/ax1"} element={<Ax1 />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -46,6 +50,9 @@ function Home() {
       <h4>데이터 옮기기</h4>
       <Link to="/inp1">데이터 입력</Link><br/>
       <Link to="/oup1">데이터 출력</Link><br/>
+
+      <h4>Axios</h4>
+      <Link to="/ax1">AXIOS 사용</Link><br/>
 
       <h4>과제</h4>
       <Link to="/pro1">회원가입 창</Link>
