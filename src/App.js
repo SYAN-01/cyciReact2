@@ -5,6 +5,7 @@ import Calc1 from './comp/calc/study01'
 
 import Inp1 from './comp/inp/input01'
 import Oup1 from './comp/inp/output01'
+import Ref from './comp/inp/Ref01'
 
 import ProJoin from './comp/pro/Join'
 
@@ -22,6 +23,7 @@ function App() {
 
           <Route path={"/inp1"} element={<Inp1 />} />
           <Route path={"/oup1"} element={<Oup1 />} />
+          <Route path={"/ref1"} element={<Ref />} />
 
           <Route path={"/pro1"} element={<ProJoin />} />
 
@@ -50,6 +52,7 @@ function Home() {
       <h4>데이터 옮기기</h4>
       <Link to="/inp1">데이터 입력</Link><br/>
       <Link to="/oup1">데이터 출력</Link><br/>
+      <Link to='/ref1'>Ref 사용하기</Link>
 
       <h4>Axios</h4>
       <Link to="/ax1">AXIOS 사용</Link><br/>
