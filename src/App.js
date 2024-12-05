@@ -9,6 +9,10 @@ import Ref from './comp/inp/Ref01'
 
 import ProJoin from './comp/pro/Join'
 
+
+import ProLogin from './comp/my/Logininput'
+import ProLogin2 from './comp/my/Loginoutput'
+
 import Ax1 from './comp/ax/ax01'
 
 function App() {
@@ -26,6 +30,8 @@ function App() {
           <Route path={"/ref1"} element={<Ref />} />
 
           <Route path={"/pro1"} element={<ProJoin />} />
+          <Route path={"/login"} element={<ProLogin />} />
+          <Route path={"/login2"} element={<ProLogin2 />} />
 
           <Route path={"/ax1"} element={<Ax1 />} />
         </Routes>
@@ -58,7 +64,8 @@ function Home() {
       <Link to="/ax1">AXIOS 사용</Link><br/>
 
       <h4>과제</h4>
-      <Link to="/pro1">회원가입 창</Link>
+      <Link to="/pro1">회원가입 창</Link><br/>
+      <Link to="/login">로그인 창</Link>
     </div>
   )
 }

@@ -6,6 +6,15 @@ export default function Study() {
     const [값1, 변경값1] = useState(0);     // useState
     const 값2 = useRef(0);                 //useRef
 
+    const [msg, setMsg] = useState('주인이오면 잘 되는거야?');
+    function 언제고장나나() {
+        console.log('1');
+        console.log('2');
+        console.log('3');
+        console.log(msg);
+    
+    }
+
     return (
         <div>
             <h3>useState</h3>
@@ -29,6 +38,11 @@ export default function Study() {
                         console.log('js: ', data);
                     }
                 }/>{data}
+
+                <h3>
+                    TEST
+                </h3>
+
         </div>
     )
 }
