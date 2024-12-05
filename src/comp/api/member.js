@@ -7,7 +7,7 @@ import api from '../ax/axiosSetting'
  * @returns 
  */
 export const memberIdCheck = (obj) => {
-    return api.post('/member/findId1', JSON.stringify(obj)
+    return api.post('/member/findId', JSON.stringify(obj)
     , {
         headers: {
             'Content-Type': 'application/json'
@@ -29,13 +29,12 @@ export const memberLogin = (obj) => {
  * @returns 
  */
 export const areaList = () => {
-    console.log('axiosi');
     return api.get('/area/list');
 }
 
 /**
- * 회원가입
- * @param {} obj 
+ * 회원가입 기능
+ * @param {}
  * @returns 
  */
 export const memberRegist = (obj) => {

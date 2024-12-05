@@ -43,6 +43,12 @@ function Login() {
                 }
             } />
 
+            <input type='button' value='회원가입' onClick={
+                () => {
+                    navigate('/pro1');
+                }
+            }/>
+
         </div>
     );
 }
