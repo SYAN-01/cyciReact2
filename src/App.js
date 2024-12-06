@@ -16,7 +16,13 @@ import ProLogin2 from './comp/my/Loginoutput'
 import ProLogin3 from './comp/pro/Login'
 import ProItemList from './comp/pro/ItemList'
 
+import BoardList from './comp/mytask/boardlist'
+import AddBoardPage from './comp/mytask/AddBoardPage'
+import BoardDetailPage from './comp/mytask/BoardDetailPage'
+import EditBoardPage from './comp/mytask/EditBoardPage'
+
 import Ax1 from './comp/ax/ax01'
+
 
 function App() {
   return (
@@ -39,6 +45,11 @@ function App() {
           <Route path={"/login3"} element={<ProLogin3 />} />
 
           <Route path={"/itemList"} element={<ProItemList />} />
+
+          <Route path={"/boardlist"} element={<BoardList />} />
+          <Route path={"/addboard"} element={<AddBoardPage />} />
+          <Route path={"/boarddetail/:boardId"} element={<BoardDetailPage />} />
+          <Route path={"/editboard/:boardId"} element={<EditBoardPage />} />
 
           <Route path={"/ax1"} element={<Ax1 />} />
         </Routes>
@@ -78,6 +89,9 @@ function Home() {
 
       <h4>과제</h4>
       <Link to="/login">로그인 창</Link><br/>
+
+      <h4>게시판 과제</h4>
+      <Link to="/boardlist">게시판</Link><br/>
 
       <h4>아이템리스트</h4>
       <Link to="/itemList">아이템 리스트</Link>

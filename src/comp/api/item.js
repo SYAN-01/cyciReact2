@@ -1,12 +1,12 @@
 import api from '../ax/axiosSetting'
 
 /**
- * 아이템 리슷트
+ * 아이템 리스트
  * @param {} param 
  * @returns 
  */
 export const itemList = (param) => {
-
+ 
     return api.get('/item/all', {
         params: param
     });
