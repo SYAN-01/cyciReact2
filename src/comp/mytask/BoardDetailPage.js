@@ -50,25 +50,125 @@ export default function BoardDetailPage() {
     };
 
     if (!board) {
-        return <div>Loading...</div>; // 로딩 중일 때 표시
+        return <div style={styles.loading}>Loading...</div>; // 로딩 중일 때 표시
     }
 
-    return (
-        <div>
-            <h1>{board.title}</h1>
-            <p>{board.content}</p>
-            <p><strong>작성자:</strong> {board.memberId}</p>
-            <p><strong>추천 수:</strong> {board.boardGood}</p>
-            <p><strong>작성일:</strong> {new Date(board.createdAt).toLocaleString()}</p>
+    // 작성자가 "hong"일 경우에만 수정/삭제 버튼을 활성화
+    const isOwner = board.memberId === "hong"; 
 
-            <div>
-                {/* 추천 버튼 */}
-                <button onClick={handleGoodUp}>추천</button>
-                {/* 삭제 버튼 */}
-                <button onClick={handleDelete}>삭제</button>
-                {/* 수정 버튼 */}
-                <button onClick={handleEdit}>수정</button>
+    return (
+        <div style={styles.container}>
+            <div style={styles.card}>
+                <h1 style={styles.title}>{board.title}</h1>
+                <div style={styles.metaInfo}>
+                    <p><strong>작성자:</strong> {board.memberId}</p>
+                    <p><strong>작성일:</strong> {new Date(board.createdAt).toLocaleString()}</p>
+                    <p><strong>추천 수:</strong> {board.boardGood}</p>
+                </div>
+                <div style={styles.content}>{board.content}</div>
+
+                <div style={styles.buttonContainer}>
+                    {/* 추천 버튼 */}
+                    <button onClick={handleGoodUp} style={styles.recommendButton}>추천</button>
+
+                    {/* 수정 및 삭제 버튼: 작성자가 "hong"일 경우만 활성화 */}
+                    {isOwner && (
+                        <>
+                            <button onClick={handleDelete} style={styles.deleteButton}>삭제</button>
+                            <button onClick={handleEdit} style={styles.editButton}>수정</button>
+                        </>
+                    )}
+
+                    {/* 게시판으로 가기 버튼 */}
+                    <button onClick={() => navigate("/boardlist")} style={styles.goToBoardButton}>게시판으로 가기</button>
+                </div>
             </div>
         </div>
     );
 }
+
+// 스타일 객체
+const styles = {
+    container: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        backgroundColor: '#f4f7fc',
+        padding: '20px',
+    },
+    card: {
+        backgroundColor: 'white',
+        width: '100%',
+        maxWidth: '800px',
+        padding: '30px',
+        borderRadius: '8px',
+        boxShadow: '0 8px 16px rgba(0, 0, 0, 0.1)',
+        textAlign: 'center',
+    },
+    title: {
+        fontSize: '2em',
+        marginBottom: '15px',
+        color: '#333',
+    },
+    metaInfo: {
+        fontSize: '1em',
+        color: '#555',
+        marginBottom: '20px',
+        textAlign: 'left',
+    },
+    content: {
+        fontSize: '1.2em',
+        lineHeight: '1.6',
+        marginBottom: '20px',
+        color: '#444',
+        textAlign: 'left',
+    },
+    buttonContainer: {
+        display: 'flex',
+        justifyContent: 'space-around',
+        gap: '15px',
+        marginTop: '20px',
+    },
+    recommendButton: {
+        padding: '12px 25px',
+        backgroundColor: '#007bff',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+    },
+    deleteButton: {
+        padding: '12px 25px',
+        backgroundColor: '#dc3545',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+    },
+    editButton: {
+        padding: '12px 25px',
+        backgroundColor: '#28a745',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+    },
+    goToBoardButton: {
+        padding: '12px 25px',
+        backgroundColor: '#6c757d',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        transition: 'background-color 0.3s',
+    },
+    loading: {
+        textAlign: 'center',
+        fontSize: '1.5em',
+        color: '#777',
+    }
+};

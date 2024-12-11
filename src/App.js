@@ -21,6 +21,8 @@ import AddBoardPage from './comp/mytask/AddBoardPage'
 import BoardDetailPage from './comp/mytask/BoardDetailPage'
 import EditBoardPage from './comp/mytask/EditBoardPage'
 
+import Red01 from './comp/red/red01'
+
 import Ax1 from './comp/ax/ax01'
 
 
@@ -50,6 +52,9 @@ function App() {
           <Route path={"/addboard"} element={<AddBoardPage />} />
           <Route path={"/boarddetail/:boardId"} element={<BoardDetailPage />} />
           <Route path={"/editboard/:boardId"} element={<EditBoardPage />} />
+
+          <Route path={"/red01"} element={<Red01 />} />
+
 
           <Route path={"/ax1"} element={<Ax1 />} />
         </Routes>
@@ -95,6 +100,11 @@ function Home() {
 
       <h4>아이템리스트</h4>
       <Link to="/itemList">아이템 리스트</Link>
+
+
+      <h4>리듀서</h4>
+      <Link to="/red01">리듀서</Link>
+
     </div>
   )
 }

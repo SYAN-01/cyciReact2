@@ -35,20 +35,107 @@ export default function EditBoardPage() {
     };
 
     return (
-        <div>
-            <h1>게시글 수정</h1>
-            <input
-                type="text"
-                placeholder="제목"
-                value={board.title}
-                onChange={(e) => setBoard({ ...board, title: e.target.value })}
-            />
-            <textarea
-                placeholder="내용"
-                value={board.content}
-                onChange={(e) => setBoard({ ...board, content: e.target.value })}
-            ></textarea>
-            <button onClick={handleUpdateBoard}>수정</button>
+        <div style={styles.container}>
+            <div style={styles.card}>
+                <h1 style={styles.title}>게시글 수정</h1>
+                <div style={styles.form}>
+                    <input
+                        type="text"
+                        placeholder="제목을 입력하세요"
+                        value={board.title}
+                        onChange={(e) => setBoard({ ...board, title: e.target.value })}
+                        style={styles.input}
+                    />
+                    <textarea
+                        placeholder="내용을 입력하세요"
+                        value={board.content}
+                        onChange={(e) => setBoard({ ...board, content: e.target.value })}
+                        style={styles.textarea}
+                    ></textarea>
+                    <div style={styles.buttonContainer}>
+                        <button onClick={handleUpdateBoard} style={styles.submitButton}>
+                            수정
+                        </button>
+                        <button onClick={() => navigate(`/boarddetail/${boardId}`)} style={styles.cancelButton}>
+                            취소
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
+
+// 스타일 객체
+const styles = {
+    container: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        backgroundColor: '#f4f7fc',
+        padding: '20px',
+    },
+    card: {
+        backgroundColor: 'white',
+        width: '100%',
+        maxWidth: '600px',
+        padding: '40px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+        textAlign: 'center',
+    },
+    title: {
+        fontSize: '2em',
+        marginBottom: '20px',
+        color: '#333',
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+    },
+    input: {
+        padding: '12px',
+        fontSize: '1em',
+        borderRadius: '8px',
+        border: '1px solid #ccc',
+        outline: 'none',
+        transition: 'border-color 0.3s',
+    },
+    textarea: {
+        padding: '12px',
+        fontSize: '1em',
+        borderRadius: '8px',
+        border: '1px solid #ccc',
+        outline: 'none',
+        height: '200px',
+        resize: 'none',
+        transition: 'border-color 0.3s',
+    },
+    buttonContainer: {
+        display: 'flex',
+        gap: '20px',
+        justifyContent: 'center',
+    },
+    submitButton: {
+        padding: '12px 30px',
+        backgroundColor: '#007bff',
+        color: 'white',
+        border: 'none',
+        borderRadius: '8px',
+        cursor: 'pointer',
+        fontSize: '1.1em',
+        transition: 'background-color 0.3s',
+    },
+    cancelButton: {
+        padding: '12px 30px',
+        backgroundColor: '#6c757d',
+        color: 'white',
+        border: 'none',
+        borderRadius: '8px',
+        cursor: 'pointer',
+        fontSize: '1.1em',
+        transition: 'background-color 0.3s',
+    },
+};

@@ -12,12 +12,11 @@ export default function AddBoardPage() {
             return;
         }
 
-        // 게시글 추가 요청 (memberId는 "hong"으로 고정)
-        createBoard({ ...newBoard, memberId: "hong" }) // memberId를 "hong"으로 고정
+        createBoard({ ...newBoard, memberId: "hong" }) 
             .then((response) => {
                 if (response.data.code === "200") {
                     alert("게시글이 등록되었습니다.");
-                    navigate("/boardlist"); // 게시글 목록 페이지로 이동
+                    navigate("/boardlist"); 
                 } else {
                     console.error("게시글 등록 오류", response.data);
                     alert("게시글 등록에 실패했습니다.");
@@ -30,23 +29,111 @@ export default function AddBoardPage() {
     };
 
     return (
-        <div>
-            <h1>게시글 추가</h1>
-            <input
-                type="text"
-                placeholder="제목"
-                value={newBoard.title}
-                onChange={(e) => setNewBoard({ ...newBoard, title: e.target.value })}
-            />
-            <textarea
-                placeholder="내용"
-                value={newBoard.content}
-                onChange={(e) =>
-                    setNewBoard({ ...newBoard, content: e.target.value })
-                }
-            ></textarea>
-            <button onClick={handleCreateBoard}>등록</button>
-            <button onClick={() => navigate("/boardlist")}>취소</button>
+        <div style={styles.container}>
+            <div style={styles.card}>
+                <h1 style={styles.title}>게시글 추가</h1>
+                <div style={styles.form}>
+                    <input
+                        type="text"
+                        placeholder="제목을 입력하세요"
+                        value={newBoard.title}
+                        onChange={(e) =>
+                            setNewBoard({ ...newBoard, title: e.target.value })
+                        }
+                        style={styles.input}
+                    />
+                    <textarea
+                        placeholder="내용을 입력하세요"
+                        value={newBoard.content}
+                        onChange={(e) =>
+                            setNewBoard({ ...newBoard, content: e.target.value })
+                        }
+                        style={styles.textarea}
+                    ></textarea>
+                    <div style={styles.buttonContainer}>
+                        <button onClick={handleCreateBoard} style={styles.submitButton}>
+                            등록
+                        </button>
+                        <button onClick={() => navigate("/boardlist")} style={styles.cancelButton}>
+                            취소
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
+
+// 스타일 객체
+const styles = {
+    container: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        backgroundColor: '#f4f7fc',
+        padding: '20px',
+    },
+    card: {
+        backgroundColor: 'white',
+        width: '100%',
+        maxWidth: '600px',
+        padding: '40px',
+        borderRadius: '10px',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+        textAlign: 'center',
+    },
+    title: {
+        fontSize: '2em',
+        marginBottom: '20px',
+        color: '#333',
+    },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px',
+    },
+    input: {
+        padding: '12px',
+        fontSize: '1em',
+        borderRadius: '8px',
+        border: '1px solid #ccc',
+        outline: 'none',
+        transition: 'border-color 0.3s',
+    },
+    textarea: {
+        padding: '12px',
+        fontSize: '1em',
+        borderRadius: '8px',
+        border: '1px solid #ccc',
+        outline: 'none',
+        height: '200px',
+        resize: 'none',
+        transition: 'border-color 0.3s',
+    },
+    buttonContainer: {
+        display: 'flex',
+        gap: '20px',
+        justifyContent: 'center',
+    },
+    submitButton: {
+        padding: '12px 30px',
+        backgroundColor: '#28a745',
+        color: 'white',
+        border: 'none',
+        borderRadius: '8px',
+        cursor: 'pointer',
+        fontSize: '1.1em',
+        transition: 'background-color 0.3s',
+    },
+    cancelButton: {
+        padding: '12px 30px',
+        backgroundColor: '#6c757d',
+        color: 'white',
+        border: 'none',
+        borderRadius: '8px',
+        cursor: 'pointer',
+        fontSize: '1.1em',
+        transition: 'background-color 0.3s',
+    },
+};
