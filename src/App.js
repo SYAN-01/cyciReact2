@@ -22,6 +22,7 @@ import BoardDetailPage from './comp/mytask/BoardDetailPage'
 import EditBoardPage from './comp/mytask/EditBoardPage'
 
 import Red01 from './comp/red/red01'
+import Red02 from './comp/red/Red02'
 
 import Ax1 from './comp/ax/ax01'
 
@@ -54,6 +55,7 @@ function App() {
           <Route path={"/editboard/:boardId"} element={<EditBoardPage />} />
 
           <Route path={"/red01"} element={<Red01 />} />
+          <Route path={'/red02'} element={<Red02 />} />
 
 
           <Route path={"/ax1"} element={<Ax1 />} />
@@ -104,6 +106,7 @@ function Home() {
 
       <h4>리듀서</h4>
       <Link to="/red01">리듀서</Link>
+      <Link to='/red02'>리듀서 02</Link><br/>
 
     </div>
   )
